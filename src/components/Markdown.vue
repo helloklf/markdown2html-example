@@ -82,7 +82,7 @@
 
 <script>
 import marked from 'marked'
-/* 这里只是读取到纯文本文件，还没有转换为html */
+/* 通过markdown-loader加载md文件，已经自动转换为html，可直接使用 */
 import readMe from '@/assets/test.md'
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -105,7 +105,10 @@ export default {
   },
   computed: {
     content () {
-      return marked(readMe)
+      /* readMe是已经转换过的内容，可直接返回 */
+      //return marked(readMe)
+      /* 将markdown内容转换为html */
+      return marked('# 标题 \n > 段落 \n')
     }
   }
 }
